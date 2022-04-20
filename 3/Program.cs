@@ -43,5 +43,4 @@ class Program
     {
         Console.WriteLine("\nСортировка завершена");
     }
-
 }
