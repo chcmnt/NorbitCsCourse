@@ -31,7 +31,7 @@ class Program
     {
         int[] array = { 10, 9, 8, 12, 4, 0, 6, 3 };
         var sort = new ArbitaryArraySorting();
-        sort.SortingIsDone += Sort_SortingIsDone;
+        sort.SortingIsDone += (s, e) => { Console.WriteLine("\nСортировка завершена"); };
         sort.SortArray<int>(array, ArbitaryArraySorting.CompareIntArray);
         foreach (var item in array)
         {
@@ -39,8 +39,9 @@ class Program
         }
     }
 
-    private static void Sort_SortingIsDone(object? sender, EventArgs e)
-    {
-        Console.WriteLine("\nСортировка завершена");
-    }
+    //private static void Sort_SortingIsDone
+    //(object? sender, EventArgs e)
+    //{
+    //    Console.WriteLine("\nСортировка завершена");
+    //}
 }
