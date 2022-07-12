@@ -73,7 +73,7 @@ namespace _3.Library3
         {
             if (collection is null)
             {
-                throw new ArgumentNullException("Переданная коллекция пустая", nameof(collection));
+                throw new ArgumentNullException("Переданная коллекция - null", nameof(collection));
             }
 
             if (Capacity < Length + collection.Count())
@@ -230,7 +230,7 @@ namespace _3.Library3
         {
             for (var i = 0; i < Length; i++)
             {
-                yield return this.GetElement(i);
+                yield return GetElement(i);
             }
         }
 
