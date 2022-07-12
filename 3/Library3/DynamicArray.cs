@@ -47,7 +47,7 @@ namespace _3.Library3
             amountOfElements = collection.Count();
         }
         /// <summary>
-        /// Добавляет элемент в конец массива.
+        /// Добавляет элемент массив.
         /// </summary>
         /// <param name="item"></param>
         public void Add(T item)
@@ -76,10 +76,10 @@ namespace _3.Library3
                 throw new ArgumentNullException("Переданная коллекция пустая", nameof(collection));
             }
 
-            if (Capacity() < Length() + collection.Count())
+            if (Capacity < Length + collection.Count())
             {
-                var newArray = new T[Length() + collection.Count()];
-                for (var i = 0; i < Length(); i++)
+                var newArray = new T[Length + collection.Count()];
+                for (var i = 0; i < Length; i++)
                 {
                     newArray[i] = GetElement(i);
                 }
@@ -121,7 +121,7 @@ namespace _3.Library3
         {
             if (item == null)
             {
-                throw new ArgumentNullException("Переданный элемент пуст", nameof(item));
+                throw new ArgumentNullException("Переданный элемент - null", nameof(item));
             }
             for (var i = 0; i < amountOfElements; i++)
             {
@@ -163,18 +163,18 @@ namespace _3.Library3
         /// <summary>
         /// Возвращает количество элементов массива.
         /// </summary>
-        public int Length()
+        public int Length
         {
-            return amountOfElements;
+            get { return amountOfElements; } 
         }
 
         /// <summary>
         /// Возвращает длину внутреннего массива.
         /// </summary>
         /// <returns></returns>
-        public int Capacity()
+        public int Capacity
         {
-            return dynamicArray.Length;
+            get { return dynamicArray.Length; }
         }
 
         /// <summary>
@@ -208,11 +208,11 @@ namespace _3.Library3
                 return false;
             }
             DynamicArray<T> Array = (DynamicArray<T>)obj;
-            if (this.Length() != Array.Length())
+            if (this.Length != Array.Length)
             {
                 return false;
             }
-            for (var i = 0; i < Length(); i++)
+            for (var i = 0; i < Length; i++)
             {
                 if (!this.GetElement(i).Equals(Array.GetElement(i)))
                 {
@@ -228,7 +228,7 @@ namespace _3.Library3
         /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
         {
-            for (var i = 0; i < Length(); i++)
+            for (var i = 0; i < Length; i++)
             {
                 yield return this.GetElement(i);
             }
