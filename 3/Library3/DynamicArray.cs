@@ -20,8 +20,9 @@ namespace _3.Library3
         }
 
         public DynamicArray()
+            :this DynamicArray(DEFAULT_ARRAY_SIZE)
         {
-            dynamicArray = new T[DEFAULT_ARRAY_SIZE];
+           
         }
 
         public DynamicArray(int size)
@@ -52,17 +53,7 @@ namespace _3.Library3
         /// <param name="item"></param>
         public void Add(T item)
         {
-            if (amountOfElements == dynamicArray.Length)
-            {
-                var newArray = new T[dynamicArray.Length * 2];
-                for (var i = 0; i < dynamicArray.Length; i++)
-                {
-                    newArray[i] = dynamicArray[i];
-                }
-                dynamicArray = newArray;
-            }
-            dynamicArray[amountOfElements] = item;
-            amountOfElements++;
+            AddRange(new T[] {item });
         }
 
         /// <summary>
