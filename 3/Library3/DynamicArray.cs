@@ -20,7 +20,7 @@ namespace _3.Library3
         }
 
         public DynamicArray()
-            :this DynamicArray(DEFAULT_ARRAY_SIZE)
+            :this (DEFAULT_ARRAY_SIZE)
         {
            
         }
