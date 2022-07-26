@@ -7,6 +7,14 @@
         public event EventHandler SortingIsDone;
 
         /// <summary>
+        /// Вызов события SortingIsDone.
+        /// </summary>
+        public void InvokeSortingIsDone()
+        {
+            SortingIsDone.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
         /// Метод для упорядочивания массива произвольного типа.
         /// </summary>
         /// <typeparam name="T"></typeparam>

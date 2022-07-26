@@ -34,14 +34,10 @@ class Program
         var sort = new ArbitaryArraySorting();
         sort.SortArray<int>(array, ArbitaryArraySorting.CompareIntArray);
         sort.SortingIsDone += (s, e) => Console.WriteLine("Сортировка завершена");
+        sort.InvokeSortingIsDone();
         foreach (var item in array)
         {
             Console.Write(item + " ");
         }
     }
-    //private static void Sort_SortingIsDone
-    //(object? sender, EventArgs e)
-    //{
-    //    Console.WriteLine("\nСортировка завершена");
-    //}
 }
