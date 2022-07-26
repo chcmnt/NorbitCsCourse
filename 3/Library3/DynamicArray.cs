@@ -53,7 +53,21 @@ namespace _3.Library3
         /// <param name="item"></param>
         public void Add(T item)
         {
-            AddRange(new T[] {item });
+            if (item == null)
+            {
+                throw new ArgumentNullException("элемент - null", nameof(item));
+            }
+            if (Length == Capacity - 1)
+            {
+                var newArray = new T[Capacity * 2];
+                for (var i = 0; i < Capacity; i++)
+                {
+                    newArray[i] = dynamicArray[i];
+                }
+                dynamicArray = newArray;
+            }
+            dynamicArray[amountOfElements] = item;
+            amountOfElements++;
         }
 
         /// <summary>
@@ -70,13 +84,13 @@ namespace _3.Library3
             if (Capacity < Length + collection.Count())
             {
                 var newArray = new T[Length + collection.Count()];
-                for (var i = 0; i < Length; i++)
+                for (var i = 0; i <= Length; i++)
                 {
                     newArray[i] = GetElement(i);
                 }
                 dynamicArray = newArray;
             }
-            for (var i = 0; i < collection.Count(); i++)
+            for (int i = 0; i < collection.Count(); i++)
             {
                 Add(collection.ElementAt(i));
             }
