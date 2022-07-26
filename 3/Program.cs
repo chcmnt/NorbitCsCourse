@@ -1,7 +1,7 @@
 ﻿using _3.Library3;
 class Program
 {
-    public static void Main(string[] args)
+    public static void Main()
     {
         WordsFrequency.PrintCalculatedFrequency("каждое слово по два раза. КАЖДОЕ СЛОВО ПО ДВА РАЗА и еще какие-то слова");
         TestForeach();
@@ -22,6 +22,7 @@ class Program
         {
             Console.Write(item + " ");
         }
+        Console.WriteLine();
     }
 
     /// <summary>
@@ -31,14 +32,13 @@ class Program
     {
         int[] array = { 10, 9, 8, 12, 4, 0, 6, 3 };
         var sort = new ArbitaryArraySorting();
-        sort.SortingIsDone += (s, e) => { Console.WriteLine("\nСортировка завершена"); };
         sort.SortArray<int>(array, ArbitaryArraySorting.CompareIntArray);
+        sort.SortingIsDone += (s, e) => Console.WriteLine("Сортировка завершена");
         foreach (var item in array)
         {
             Console.Write(item + " ");
         }
     }
-
     //private static void Sort_SortingIsDone
     //(object? sender, EventArgs e)
     //{

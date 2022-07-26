@@ -2,6 +2,8 @@
 {
     public class ArbitaryArraySorting
     {
+        public delegate int CompareMethod<T> (T first, T second);
+
         public event EventHandler SortingIsDone;
 
         /// <summary>
@@ -10,13 +12,13 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="array">Массив, который нужно отсортировать.</param>
         /// <param name="compareMethod">Метод сравнения.</param>
-        public void SortArray<T>(T[] array, Func<T, T, int> compareMethod)
+        public void SortArray<T>(T[] array, CompareMethod<T> compare)
         {
             for (var i = 0; i < array.Length; i++)
             {
                 for (var j = 0; j < array.Length; j++)
                 {
-                    if (compareMethod(array[j], array[i]) > 0)
+                    if (compare(array[i], array[j]) > 0)
                     {
                         var temp = array[i];
                         array[i] = array[j];
@@ -24,12 +26,6 @@
                     }
                 }
             }
-            if (SortingIsDone == null)
-            {
-                throw new ArgumentNullException("событие = null", nameof(SortingIsDone));
-            }
-            SortingIsDone(this, null);
-
         }
 
         /// <summary>
@@ -40,15 +36,15 @@
         /// <returns></returns>
         public static int CompareIntArray(int firstValue, int secondValue)
         {
-            if (firstValue == null)
+            if (firstValue < secondValue)
+            {
+                return 1;
+            } 
+            if (firstValue > secondValue)
             {
                 return -1;
             }
-            if (secondValue == null)
-            {
-                return 1;
-            }
-            return firstValue.CompareTo(secondValue);
+            return 0;
         }
     }
 }
